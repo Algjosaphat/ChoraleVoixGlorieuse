@@ -4,7 +4,7 @@ import Hero from './components/Hero.vue'
 import EventSection from './components/EventSection.vue'
 import AboutSection from './components/AboutSection.vue'
 import GallerySection from './components/GallerySection.vue'
-import JoinSection from './components/JoinSection.vue'
+import LeadersSection from './components/LeadersSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteFooter from './components/SiteFooter.vue'
 </script>
@@ -16,7 +16,7 @@ import SiteFooter from './components/SiteFooter.vue'
     <EventSection />
     <AboutSection />
     <GallerySection />
-    <JoinSection />
+    <LeadersSection />
     <ContactSection />
   </main>
   <SiteFooter />

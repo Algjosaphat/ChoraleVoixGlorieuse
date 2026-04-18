@@ -10,7 +10,7 @@ const links = [
   { href: '#evenement', label: 'Événement' },
   { href: '#a-propos', label: 'À propos' },
   { href: '#galerie', label: 'Galerie' },
-  { href: '#rejoindre', label: 'Rejoindre' },
+  { href: '#responsables', label: 'Responsables' },
   { href: '#contact', label: 'Contact' },
 ]
 
