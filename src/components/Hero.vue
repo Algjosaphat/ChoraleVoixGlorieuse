@@ -5,7 +5,7 @@ import Countdown from './Countdown.vue'
 const eventDate = new Date('2026-04-25T15:00:00')
 const videoFailed = ref(false)
 const videoMp4 = '/videos/worship-bg.mp4'
-const videoWebm = '/videos/worship-bg.webm'
+const videoWebm = '/videos/Hero.webm'
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const videoWebm = '/videos/worship-bg.webm'
     ></div>
 
     <div class="relative max-w-6xl mx-auto px-6 text-center py-24 w-full">
-      <p class="font-display text-[0.78rem] tracking-[4px] uppercase text-gold-deep dark:text-gold mb-4">
+      <!-- <p class="font-display text-[0.78rem] tracking-[4px] uppercase text-gold-deep dark:text-gold mb-4">
         Chorale Voix Glorieuse · Temple Béthanie
       </p>
       <h1 class="font-display font-medium leading-[1.12] tracking-wide text-4xl sm:text-5xl md:text-6xl mb-5 text-ink dark:text-cream">
@@ -45,7 +45,7 @@ const videoWebm = '/videos/worship-bg.webm'
       </h1>
       <p class="text-ink-dim dark:text-cream-dim max-w-xl mx-auto mb-10 text-[1.05rem]">
         Prochainement, un moment de louange exceptionnel au Temple Béthanie.
-      </p>
+      </p> -->
 
       <article
         class="text-center max-w-2xl mx-auto rounded-[18px] border border-black/10 dark:border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.25)] dark:shadow-[0_30px_80px_rgba(0,0,0,0.45)] backdrop-blur-md px-6 sm:px-8 py-9 bg-white/70 dark:bg-white/[0.04]"

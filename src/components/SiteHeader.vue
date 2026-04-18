@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useTheme } from '../composables/useTheme.js'
+import Logo from '../../public/leaders/Logo.jpeg'
 
 const { theme, toggle } = useTheme()
 const open = ref(false)
@@ -20,14 +21,15 @@ function close() {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-cream-page/80 dark:bg-night/75 border-b border-black/5 dark:border-white/10 transition-colors">
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-transparent transition-colors duration-300">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#accueil" class="flex items-center gap-3 text-ink dark:text-cream">
         <span
           class="inline-flex items-center justify-center w-11 h-11 rounded-full font-display font-bold text-[1.05rem] tracking-wider"
           style="background: radial-gradient(circle at 30% 30%, #f1c86a, #9b7524); color:#1a1024; box-shadow: 0 6px 18px rgba(212,168,75,.35)"
         >
-          V<span class="text-[#2a1c08]">G</span>
+          <!-- V<span class="text-[#2a1c08]">G</span> -->
+           <img :src="Logo" alt="Logo de la Chorale Voix Glorieuse" class="w-full h-full rounded-full object-cover">
         </span>
         <span class="flex flex-col leading-tight">
           <span class="font-display tracking-[2px] text-[1.05rem]">Voix Glorieuse</span>
@@ -77,7 +79,7 @@ function close() {
       </div>
     </div>
 
-    <div v-if="open" class="md:hidden border-t border-black/5 dark:border-white/10 bg-cream-page/95 dark:bg-night/95">
+    <div v-if="open" class="md:hidden border-t border-black/5 dark:border-white/10 bg-transparent backdrop-blur-md">
       <nav class="px-6 py-4 flex flex-col gap-3">
         <a
           v-for="l in links"

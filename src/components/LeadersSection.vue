@@ -4,22 +4,22 @@ import { reactive } from 'vue'
 const leaders = reactive([
   {
     role: 'Directeur de la Chorale',
-    name: 'Nom à préciser',
-    image: '/leaders/directeur.jpg',
+    name: 'DASSI David',
+    image: '/leaders/DC.png',
     mission: 'Porte la vision spirituelle de la chorale et coordonne son rayonnement au sein du Temple Béthanie.',
     failed: false,
   },
   {
     role: 'Maître de la Chorale',
-    name: 'Nom à préciser',
-    image: '/leaders/maitre.jpg',
+    name: 'VITOU André',
+    image: '/leaders/Maître.jpeg',
     mission: 'Dirige les répétitions, forme les voix et veille à l\'excellence musicale de chaque prestation.',
     failed: false,
   },
   {
     role: 'Organiste de la Chorale',
-    name: 'Nom à préciser',
-    image: '/leaders/organiste.jpg',
+    name: 'MisterKof',
+    image: '/leaders/MisterKof.jpeg',
     mission: 'Accompagne la chorale à l\'orgue et soutient la ferveur de nos temps de louange.',
     failed: false,
   },
