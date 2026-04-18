@@ -1,13 +1,13 @@
 <template>
-  <section id="rejoindre" class="py-20 md:py-24">
+  <section id="rejoindre" class="py-20 md:py-24 bg-cream-page dark:bg-night transition-colors">
     <div class="max-w-4xl mx-auto px-6 text-center">
-      <p class="font-display text-[0.78rem] tracking-[4px] uppercase text-gold mb-4">
+      <p class="font-display text-[0.78rem] tracking-[4px] uppercase text-gold-deep dark:text-gold mb-4">
         Nous rejoindre
       </p>
-      <h2 class="font-display font-semibold text-3xl md:text-4xl mb-5 tracking-wide">
+      <h2 class="font-display font-semibold text-3xl md:text-4xl mb-5 tracking-wide text-ink dark:text-cream">
         Votre voix a sa place parmi nous
       </h2>
-      <p class="text-cream-dim max-w-2xl mx-auto mb-8 text-[1.05rem]">
+      <p class="text-ink-dim dark:text-cream-dim max-w-2xl mx-auto mb-8 text-[1.05rem]">
         Vous aimez chanter et souhaitez servir au sein du Temple Béthanie ?
         La Chorale Voix Glorieuse vous accueille à bras ouverts.
       </p>

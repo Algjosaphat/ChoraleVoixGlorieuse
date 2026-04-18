@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -16,6 +17,12 @@ export default {
         cream: {
           DEFAULT: '#f4eedd',
           dim: '#c9c0a8',
+          page: '#fbf6ea',
+          soft: '#f3ead1',
+        },
+        ink: {
+          DEFAULT: '#1a1024',
+          dim: '#5c5340',
         },
         muted: '#8f8779',
         gold: {

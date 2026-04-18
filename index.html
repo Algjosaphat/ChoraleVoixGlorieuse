@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -8,9 +8,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem('vg-theme')
+          const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+          const theme = saved === 'light' || saved === 'dark' ? saved : (prefersLight ? 'light' : 'dark')
+          document.documentElement.classList.toggle('dark', theme === 'dark')
+          document.documentElement.style.colorScheme = theme
+        } catch (_) {}
+      })()
+    </script>
     <title>Voix Glorieuse — Temple Béthanie</title>
   </head>
-  <body class="bg-night text-cream antialiased">
+  <body class="antialiased bg-cream-page text-ink dark:bg-night dark:text-cream transition-colors">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -4,18 +4,27 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { font-family: theme('fontFamily.sans'); }
+  body {
+    font-family: theme('fontFamily.sans');
+  }
 }
 
 @layer utilities {
   .text-gradient-gold {
-    background: linear-gradient(90deg, #f1c86a, #d4a84b, #f1c86a);
+    background: linear-gradient(90deg, #f1c86a, #d4a84b, #9b7524);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
-  .bg-hero {
+  .bg-hero-light {
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(212, 168, 75, 0.25), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(155, 117, 36, 0.15), transparent 55%),
+      linear-gradient(180deg, #fbf6ea 0%, #f3ead1 100%);
+  }
+
+  .bg-hero-dark {
     background:
       radial-gradient(ellipse at 20% 10%, rgba(212, 168, 75, 0.18), transparent 55%),
       radial-gradient(ellipse at 85% 80%, rgba(120, 70, 200, 0.18), transparent 55%),
@@ -35,6 +44,6 @@
     top: 0; left: 0; right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, #d4a84b, transparent);
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }

@@ -43,13 +43,11 @@ const message = computed(() => {
   return 'Rendez-vous le samedi 25 avril 2026 à 15h.'
 })
 
-const messageClass = computed(() =>
-  state.value === 'live'
-    ? 'text-gold-bright font-semibold'
-    : state.value === 'past'
-      ? 'text-cream-dim'
-      : 'text-muted'
-)
+const messageClass = computed(() => {
+  if (state.value === 'live') return 'text-gold-deep dark:text-gold-bright font-semibold'
+  if (state.value === 'past') return 'text-ink-dim dark:text-cream-dim'
+  return 'text-muted'
+})
 
 const units = computed(() => [
   { key: 'days', label: 'Jours', value: parts.value.days },
@@ -70,9 +68,9 @@ const units = computed(() => [
       <div
         v-for="u in units"
         :key="u.key"
-        class="unit-glow relative bg-white/[0.03] border border-white/10 rounded-[10px] py-4 px-2 sm:py-5 flex flex-col items-center gap-1 overflow-hidden"
+        class="unit-glow relative bg-black/[0.03] dark:bg-white/[0.03] border border-black/10 dark:border-white/10 rounded-[10px] py-4 px-2 sm:py-5 flex flex-col items-center gap-1 overflow-hidden"
       >
-        <span class="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gold-bright tabular-nums tracking-wider">
+        <span class="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gold-deep dark:text-gold-bright tabular-nums tracking-wider">
           {{ u.value }}
         </span>
         <span class="text-[0.65rem] sm:text-[0.72rem] tracking-[2px] uppercase text-muted">
