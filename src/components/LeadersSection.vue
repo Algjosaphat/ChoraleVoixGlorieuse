@@ -20,7 +20,7 @@ const leaders = reactive([
     role: 'Organiste de la Chorale',
     name: 'MisterKof',
     image: '/leaders/MisterKof.jpeg',
-    mission: 'Accompagne la chorale à l\'orgue et soutient la ferveur de nos temps de louange.',
+    mission: 'Accompagne la chorale au piano et soutient la ferveur de nos temps de louange.',
     failed: false,
   },
 ])
