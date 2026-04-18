@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: theme('fontFamily.sans'); }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(90deg, #f1c86a, #d4a84b, #f1c86a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-hero {
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(212, 168, 75, 0.18), transparent 55%),
+      radial-gradient(ellipse at 85% 80%, rgba(120, 70, 200, 0.18), transparent 55%),
+      linear-gradient(180deg, #130c22 0%, #0f0a18 100%);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f1c86a, #9b7524);
+    color: #1a1024;
+    box-shadow: 0 8px 22px rgba(212, 168, 75, 0.3);
+  }
+  .btn-primary:hover { filter: brightness(1.05); }
+
+  .unit-glow::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a84b, transparent);
+    opacity: 0.5;
+  }
+}
