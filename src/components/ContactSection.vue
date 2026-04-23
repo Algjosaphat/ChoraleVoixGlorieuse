@@ -1,7 +1,8 @@
 <script setup>
 const cards = [
   { title: 'Temple Béthanie', body: 'Lieu de nos répétitions et de nos célébrations.' },
-  { title: 'Écrivez-nous', html: '<a class="text-gold-deep dark:text-gold-bright hover:text-gold" href="mailto:contact@voixglorieuse.org">contact@voixglorieuse.org</a>' },
+  { title: 'Écrivez-nous', html: '<a class="text-gold-deep dark:text-gold-bright hover:text-gold" href="mailto:gloriousvoicechoir@gmail.com">gloriousvoicechoir@gmail.com</a>' },
+  // {title: 'Tél', body:'0197084092 / 0197984922 / 0197385883'},
   { title: 'Horaires de répétition', body: 'Mercredi soir 20h, Vendredi soir 20h, et Dimanche après notre culte au Temple Béthanie.' },
 ]
 </script>

@@ -59,9 +59,9 @@ const items = reactive([
         </figure>
       </div>
 
-      <p class="text-center text-muted text-xs mt-6">
+      <!-- <p class="text-center text-muted text-xs mt-6">
         Déposez vos photos dans <code class="text-gold-deep dark:text-gold-bright">public/gallery/</code> (photo-1.jpg à photo-6.jpg) pour les afficher ici.
-      </p>
+      </p> -->
     </div>
   </section>
 </template>

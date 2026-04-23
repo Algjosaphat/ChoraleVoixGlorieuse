@@ -21,7 +21,7 @@ const pillars = [
           de porter un message d'espérance et d'adoration.
         </p>
         <p class="text-ink-dim dark:text-cream-dim">
-          Par notre musique, nous souhaitons édifier l'Église, toucher les cœurs et
+          Par notre voix, nous souhaitons édifier l'Église, toucher les cœurs et
           faire résonner la louange au-delà des murs du temple.
         </p>
       </div>

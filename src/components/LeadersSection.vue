@@ -10,7 +10,7 @@ const leaders = reactive([
     failed: false,
   },
   {
-    role: 'Maître de la Chorale',
+    role: 'Maître de cheur',
     name: 'VITOU André',
     image: '/leaders/Maître.jpeg',
     mission: 'Dirige les répétitions, forme les voix et veille à l\'excellence musicale de chaque prestation.',
@@ -18,7 +18,7 @@ const leaders = reactive([
   },
   {
     role: 'Organiste de la Chorale',
-    name: 'MisterKof',
+    name: 'ODOH Kofi (MisterKof)',
     image: '/leaders/MisterKof.jpeg',
     mission: 'Accompagne la chorale au piano et soutient la ferveur de nos temps de louange.',
     failed: false,
