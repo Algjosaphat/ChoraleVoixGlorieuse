@@ -1,14 +1,55 @@
 <script setup>
-import { reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 
-const items = reactive([
-  { src: '/gallery/photo-1.jpg', alt: 'Concert de louange', failed: false, span: 'md:row-span-2' },
-  { src: '/gallery/photo-2.jpg', alt: 'Répétition au temple', failed: false, span: '' },
-  { src: '/gallery/photo-3.jpg', alt: 'Moment d\'adoration', failed: false, span: '' },
-  { src: '/gallery/photo-4.jpg', alt: 'Culte du dimanche', failed: false, span: 'md:col-span-2' },
-  { src: '/gallery/photo-5.jpg', alt: 'Rassemblement', failed: false, span: '' },
-  { src: '/gallery/photo-6.jpg', alt: 'Chorale en action', failed: false, span: '' },
-])
+// Provisoire : photos WhatsApp déposées dans public/photo chorale/
+const photoFiles = [
+  'WhatsApp Image 2026-11-02 at 16.13.46.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.46 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.47.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.47 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.47 (2).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.47 (3).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.48.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.48 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.48 (2).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.48 (3).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.48 (4).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.49.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.49 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.49 (2).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.49 (3).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.50.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.50 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.50 (2).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.50 (3).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.50 (4).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.51.jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.51 (1).jpeg',
+  'WhatsApp Image 2026-11-02 at 16.13.51 (2).jpeg',
+]
+
+const spanPattern = ['md:row-span-2', '', '', 'md:col-span-2', '', '']
+
+const items = reactive(
+  photoFiles.map((file, i) => ({
+    src: encodeURI(`/photo chorale/${file}`),
+    alt: `Chorale Voix Glorieuse — photo ${i + 1}`,
+    failed: false,
+    span: spanPattern[i % spanPattern.length],
+  })),
+)
+
+const INITIAL_COUNT = 6
+const showAll = ref(false)
+const visibleItems = computed(() => (showAll.value ? items : items.slice(0, INITIAL_COUNT)))
+const hiddenCount = items.length - INITIAL_COUNT
+
+function toggleShowAll() {
+  showAll.value = !showAll.value
+  if (!showAll.value) {
+    document.getElementById('galerie')?.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <template>
@@ -24,9 +65,9 @@ const items = reactive([
         Quelques instantanés de nos répétitions, cultes et concerts au Temple Béthanie.
       </p>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] md:auto-rows-[220px] gap-3">
+      <div class="grid grid-cols-2 md:grid-cols-3 auto-rows-[180px] md:auto-rows-[220px] grid-flow-dense gap-3">
         <figure
-          v-for="(item, i) in items"
+          v-for="(item, i) in visibleItems"
           :key="i"
           :class="['relative overflow-hidden rounded-[14px] border border-black/10 dark:border-white/10 group', item.span]"
         >
@@ -57,6 +98,20 @@ const items = reactive([
             {{ item.alt }}
           </figcaption>
         </figure>
+      </div>
+
+      <div v-if="hiddenCount > 0" class="flex justify-center mt-8">
+        <button
+          type="button"
+          class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-[0.95rem] tracking-wide border border-black/15 dark:border-white/15 text-ink dark:text-cream hover:border-gold hover:text-[#6f510f] dark:hover:text-gold-bright transition"
+          :aria-expanded="showAll"
+          @click="toggleShowAll"
+        >
+          {{ showAll ? 'Voir moins' : `Voir plus (${hiddenCount} photos)` }}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" :class="['w-4 h-4 transition-transform', showAll && 'rotate-180']" aria-hidden="true">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </button>
       </div>
 
       <!-- <p class="text-center text-muted text-xs mt-6">
