@@ -1,5 +1,5 @@
 <script setup>
-import { socials } from '../data/socials.js'
+import { liensSociaux as socials } from '../data/socials.js'
 
 defineProps({
   // 'inline' : ronds dorés pour hero / contact / footer

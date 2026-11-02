@@ -1,9 +1,17 @@
-export const socials = [
+import { computed } from 'vue'
+import { contenu } from './contenu.js'
+
+// Icônes et couleurs des réseaux ; les liens viennent du contenu (Dashboard site).
+// Un réseau sans lien n'est pas affiché.
+export const liensSociaux = computed(() => socials
+  .map((s) => ({ ...s, href: contenu.reseaux?.[s.key] || '' }))
+  .filter((s) => s.href))
+
+const socials = [
   {
     key: 'whatsapp',
     label: 'WhatsApp',
     hint: 'Chaîne',
-    href: 'https://whatsapp.com/channel/0029Vaa0MLj9MF9324u5Kc0s',
     color: '#25D366',
     path: 'M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.45-4.44 9.88-9.89 9.88zM20.5 3.49A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.33.16 11.88c0 2.09.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.33 11.88-11.88 0-3.17-1.23-6.15-3.47-8.43z',
   },
@@ -11,7 +19,6 @@ export const socials = [
     key: 'youtube',
     label: 'YouTube',
     hint: 'Vidéos',
-    href: 'https://youtube.com/@choralevoixglorieuse',
     color: '#FF0000',
     path: 'M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z',
   },
@@ -19,7 +26,6 @@ export const socials = [
     key: 'facebook',
     label: 'Facebook',
     hint: 'Page',
-    href: 'https://www.facebook.com/share/19kg7GxnwU/',
     color: '#1877F2',
     path: 'M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z',
   },
@@ -27,7 +33,6 @@ export const socials = [
     key: 'tiktok',
     label: 'TikTok',
     hint: 'Clips',
-    href: 'https://www.tiktok.com/@choralevoixglorieuse70',
     color: '#FE2C55',
     path: 'M19.6 6.7a4.8 4.8 0 0 1-3-1.7 4.8 4.8 0 0 1-1.2-3.1h-3.3v13.2a2.8 2.8 0 1 1-2-2.7V9a6.1 6.1 0 1 0 5.3 6V8.6a8 8 0 0 0 4.7 1.5V6.8c-.2 0-.4 0-.5-.1z',
   },

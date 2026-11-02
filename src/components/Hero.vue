@@ -2,7 +2,8 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import Countdown from './Countdown.vue'
 import SocialLinks from './SocialLinks.vue'
-import { getEventState, formatDate, formatTime, rehearsals } from '../data/events.js'
+import { getEventState, formatDate, formatTime } from '../data/events.js'
+import { contenu, urlImage } from '../data/contenu.js'
 
 const videoMp4 = '/videos/Hero.mp4'
 const videoWebm = '/videos/Hero.webm'
@@ -113,7 +114,7 @@ const lastEvent = computed(() => state.value.lastEvent)
           <span class="halo absolute -inset-4 rounded-full bg-gold/30 blur-2xl" aria-hidden="true" />
           <span class="ring absolute -inset-2 rounded-full border border-dashed border-gold/60" aria-hidden="true" />
           <img
-            src="/leaders/Logo.jpeg"
+            :src="urlImage(contenu.accueil.logo) || '/leaders/Logo.jpeg'"
             alt="Logo de la Chorale Voix Glorieuse"
             class="relative w-full h-full rounded-full object-cover border-2 border-gold shadow-[0_12px_40px_rgba(212,168,75,0.45)]"
           />
@@ -125,17 +126,17 @@ const lastEvent = computed(() => state.value.lastEvent)
         <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl tracking-wide title-gold mb-3">
           Voix Glorieuse
         </h1>
-        <p class="font-display font-semibold tracking-[3px] uppercase text-[0.8rem] sm:text-sm text-ink dark:text-cream mb-6">
-          Chorale du Temple Béthanie
+        <p v-if="contenu.accueil.sousTitre" class="font-display font-semibold tracking-[3px] uppercase text-[0.8rem] sm:text-sm text-ink dark:text-cream mb-6">
+          {{ contenu.accueil.sousTitre }}
         </p>
 
         <div class="eq flex items-end justify-center gap-1 h-7 mb-6" aria-hidden="true">
           <span v-for="n in 9" :key="n" class="eq-bar w-1 rounded-full bg-gold" :style="{ animationDelay: `${n * 0.12}s` }" />
         </div>
 
-        <blockquote class="max-w-xl mx-auto mb-8 text-ink dark:text-cream text-lg sm:text-xl italic leading-relaxed">
-          « Que tout ce qui respire loue l'Éternel ! »
-          <footer class="not-italic text-sm text-ink-dim dark:text-cream-dim mt-2 tracking-wide">Psaume 150:6</footer>
+        <blockquote v-if="contenu.accueil.citation" class="max-w-xl mx-auto mb-8 text-ink dark:text-cream text-lg sm:text-xl italic leading-relaxed">
+          « {{ contenu.accueil.citation }} »
+          <footer v-if="contenu.accueil.reference" class="not-italic text-sm text-ink-dim dark:text-cream-dim mt-2 tracking-wide">{{ contenu.accueil.reference }}</footer>
         </blockquote>
 
         <div class="flex flex-wrap gap-3 justify-center mb-9">
@@ -148,13 +149,13 @@ const lastEvent = computed(() => state.value.lastEvent)
         </div>
 
         <div class="rounded-[18px] border border-black/10 dark:border-white/10 backdrop-blur-md bg-white/70 dark:bg-white/[0.04] px-5 py-6 max-w-2xl mx-auto shadow-[0_20px_60px_rgba(0,0,0,0.2)]">
-          <p class="font-display text-[0.72rem] tracking-[3px] uppercase text-[#6f510f] dark:text-gold-bright mb-3">
+          <p v-if="contenu.repetitions.length" class="font-display text-[0.72rem] tracking-[3px] uppercase text-[#6f510f] dark:text-gold-bright mb-3">
             Nos répétitions
           </p>
-          <ul class="grid sm:grid-cols-3 gap-3 m-0 p-0 list-none mb-5">
-            <li v-for="r in rehearsals" :key="r.day" class="rounded-[10px] border border-black/10 dark:border-white/10 py-3 px-2">
-              <span class="block font-display text-ink dark:text-cream tracking-wide">{{ r.day }}</span>
-              <span class="block text-sm text-ink dark:text-cream">{{ r.time }}</span>
+          <ul v-if="contenu.repetitions.length" class="grid sm:grid-cols-3 gap-3 m-0 p-0 list-none mb-5">
+            <li v-for="(r, i) in contenu.repetitions" :key="i" class="rounded-[10px] border border-black/10 dark:border-white/10 py-3 px-2">
+              <span class="block font-display text-ink dark:text-cream tracking-wide">{{ r.jour }}</span>
+              <span class="block text-sm text-ink dark:text-cream">{{ r.heure }}</span>
             </li>
           </ul>
           <p class="text-sm text-ink dark:text-cream mb-3">Suivez-nous pour ne rien manquer de nos prochains événements</p>

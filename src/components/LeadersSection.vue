@@ -1,29 +1,9 @@
 <script setup>
 import { reactive } from 'vue'
+import { contenu, urlImage } from '../data/contenu.js'
 
-const leaders = reactive([
-  {
-    role: 'Directeur de la Chorale',
-    name: 'DASSI David',
-    image: '/leaders/DC.png',
-    mission: 'Porte la vision spirituelle de la chorale et coordonne son rayonnement au sein du Temple Béthanie.',
-    failed: false,
-  },
-  {
-    role: 'Maître de chœur',
-    name: 'VITOU André',
-    image: '/leaders/maitre-choeur.jpeg',
-    mission: 'Dirige les répétitions, forme les voix et veille à l\'excellence musicale de chaque prestation.',
-    failed: false,
-  },
-  {
-    role: 'Organiste de la Chorale',
-    name: 'ODOH Kofi (MisterKof)',
-    image: '/leaders/MisterKof.jpeg',
-    mission: 'Accompagne la chorale au piano et soutient la ferveur de nos temps de louange.',
-    failed: false,
-  },
-])
+// Photos qui n'ont pas pu être chargées (remplacées par une silhouette)
+const failed = reactive({})
 </script>
 
 <template>
@@ -33,26 +13,26 @@ const leaders = reactive([
         Responsables
       </p>
       <h2 class="text-center font-display font-semibold text-3xl md:text-4xl mb-4 tracking-wide text-ink dark:text-cream">
-        Ceux qui guident la chorale
+        {{ contenu.responsables.titre }}
       </h2>
       <p class="text-center text-ink-dim dark:text-cream-dim max-w-2xl mx-auto mb-12 text-[1.05rem]">
-        Au service de la louange, une équipe dévouée veille sur la vie et la musique de Voix Glorieuse.
+        {{ contenu.responsables.texte }}
       </p>
 
       <div class="grid gap-6 md:grid-cols-3">
         <article
-          v-for="l in leaders"
-          :key="l.role"
+          v-for="(l, i) in contenu.responsables.liste"
+          :key="i"
           class="bg-white/80 dark:bg-white/[0.04] border border-black/10 dark:border-white/10 rounded-[18px] overflow-hidden flex flex-col group"
         >
           <div class="relative w-full h-56 md:h-60 overflow-hidden">
             <img
-              v-if="!l.failed"
-              :src="l.image"
-              :alt="l.role"
+              v-if="l.photo && !failed[l.photo]"
+              :src="urlImage(l.photo)"
+              :alt="l.role || l.nom"
               loading="lazy"
               class="absolute inset-0 w-full h-full object-cover object-[center_20%] transition duration-500 group-hover:scale-105"
-              @error="l.failed = true"
+              @error="failed[l.photo] = true"
             />
             <div
               v-else
@@ -75,7 +55,7 @@ const leaders = reactive([
               {{ l.role }}
             </h3>
             <p class="text-ink dark:text-cream font-semibold text-[1.05rem] mb-3">
-              {{ l.name }}
+              {{ l.nom }}
             </p>
             <p class="text-ink-dim dark:text-cream-dim text-sm leading-relaxed">
               {{ l.mission }}
