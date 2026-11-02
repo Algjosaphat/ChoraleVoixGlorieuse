@@ -7,6 +7,7 @@ import GallerySection from './components/GallerySection.vue'
 import LeadersSection from './components/LeadersSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteFooter from './components/SiteFooter.vue'
+import SocialLinks from './components/SocialLinks.vue'
 </script>
 
 <template>
@@ -20,4 +21,5 @@ import SiteFooter from './components/SiteFooter.vue'
     <ContactSection />
   </main>
   <SiteFooter />
+  <SocialLinks variant="bar" />
 </template>

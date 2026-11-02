@@ -1,4 +1,6 @@
 <script setup>
+import SocialLinks from './SocialLinks.vue'
+
 const cards = [
   { title: 'Temple Béthanie', body: 'Lieu de nos répétitions et de nos célébrations.' },
   { title: 'Écrivez-nous', html: '<a class="text-gold-deep dark:text-gold-bright hover:text-gold" href="mailto:gloriousvoicechoir@gmail.com">gloriousvoicechoir@gmail.com</a>' },
@@ -26,6 +28,11 @@ const cards = [
           <p v-if="c.body" class="text-ink-dim dark:text-cream-dim">{{ c.body }}</p>
           <p v-else class="text-ink-dim dark:text-cream-dim" v-html="c.html"></p>
         </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <p class="font-display text-gold-deep dark:text-gold-bright tracking-wide mb-4">Retrouvez-nous sur les réseaux</p>
+        <SocialLinks />
       </div>
     </div>
   </section>

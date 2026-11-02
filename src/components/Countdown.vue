@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps({
   target: { type: Date, required: true },
-  durationMs: { type: Number, default: 3 * 60 * 60 * 1000 },
+  durationMs: { type: Number, default: 6 * 60 * 60 * 1000 },
 })
 
 const now = ref(Date.now())
@@ -38,9 +38,9 @@ const parts = computed(() => {
 })
 
 const message = computed(() => {
-  if (state.value === 'live') return "L'événement est en cours — merci d'être avec nous !"
+  if (state.value === 'live') return "L'événement est en cours, merci d'être avec nous !"
   if (state.value === 'past') return "L'événement est terminé. Merci à tous pour votre présence."
-  return 'Rendez-vous le samedi 25 avril 2026 à 15h.'
+  return 'Rendez-vous bientôt, ne manquez pas le départ !'
 })
 
 const messageClass = computed(() => {

@@ -8,11 +8,16 @@ Stack : Vue 3 + Vite + Tailwind CSS.
 
 ```bash
 npm install
-npm run dev       # serveur de dev — http://localhost:5173
+npm run dev       # serveur de dev (http://localhost:5173)
 npm run build     # build production
 npm run preview   # prévisualise le build
 ```
 
-## Événement en vedette
+## Gérer les événements
 
-**Dieu de louange — Acte 2** · samedi 25 avril 2026 à 15h00 · Temple Béthanie.
+Les événements se modifient dans `src/data/events.js`. Le hero choisit tout seul :
+un événement en cours, sinon le prochain à venir, sinon le contenu d'accueil de la chorale.
+
+## Réseaux sociaux
+
+Les liens et icônes sont dans `src/data/socials.js`.

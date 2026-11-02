@@ -17,6 +17,20 @@
     color: transparent;
   }
 
+  .title-gold {
+    background: linear-gradient(90deg, #8a6513, #6f510f, #5a420a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .dark .title-gold {
+    background: linear-gradient(90deg, #ffe39a, #f1c86a, #d4a84b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.6));
+  }
+
   .bg-hero-light {
     background:
       radial-gradient(ellipse at 20% 10%, rgba(212, 168, 75, 0.25), transparent 55%),

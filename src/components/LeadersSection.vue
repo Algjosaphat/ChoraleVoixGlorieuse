@@ -10,9 +10,9 @@ const leaders = reactive([
     failed: false,
   },
   {
-    role: 'Maître de cheur',
+    role: 'Maître de chœur',
     name: 'VITOU André',
-    image: '/leaders/Maître.jpeg',
+    image: '/leaders/maitre-choeur.jpeg',
     mission: 'Dirige les répétitions, forme les voix et veille à l\'excellence musicale de chaque prestation.',
     failed: false,
   },

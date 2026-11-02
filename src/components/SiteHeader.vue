@@ -1,10 +1,23 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useTheme } from '../composables/useTheme.js'
-import Logo from '../../public/leaders/Logo.jpeg'
+const Logo = '/leaders/Logo.jpeg'
 
 const { theme, toggle } = useTheme()
 const open = ref(false)
+const scrolled = ref(false)
+
+function onScroll() { scrolled.value = window.scrollY > 24 }
+function onKey(e) { if (e.key === 'Escape') open.value = false }
+onMounted(() => {
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('keydown', onKey)
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('keydown', onKey)
+})
 
 const links = [
   { href: '#accueil', label: 'Accueil' },
@@ -21,15 +34,17 @@ function close() {
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-transparent transition-colors duration-300">
+  <header
+    class="sticky top-0 z-50 backdrop-blur-md transition-colors duration-300 border-b"
+    :class="scrolled || open ? 'bg-cream-page/80 dark:bg-night/80 border-black/5 dark:border-white/10' : 'bg-transparent border-transparent'"
+  >
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="#accueil" class="flex items-center gap-3 text-ink dark:text-cream">
         <span
           class="inline-flex items-center justify-center w-11 h-11 rounded-full font-display font-bold text-[1.05rem] tracking-wider"
           style="background: radial-gradient(circle at 30% 30%, #f1c86a, #9b7524); color:#1a1024; box-shadow: 0 6px 18px rgba(212,168,75,.35)"
         >
-          <!-- V<span class="text-[#2a1c08]">G</span> -->
-           <img :src="Logo" alt="Logo de la Chorale Voix Glorieuse" class="w-full h-full rounded-full object-cover">
+          <img :src="Logo" alt="Logo de la Chorale Voix Glorieuse" class="w-full h-full rounded-full object-cover">
         </span>
         <span class="flex flex-col leading-tight">
           <span class="font-display tracking-[2px] text-[1.05rem]">Voix Glorieuse</span>
@@ -70,6 +85,7 @@ function close() {
           class="md:hidden w-11 h-11 rounded-[10px] border border-black/10 dark:border-white/10 flex flex-col items-center justify-center gap-1.5 text-ink dark:text-cream"
           :aria-expanded="open"
           aria-label="Ouvrir le menu"
+          aria-controls="menu-mobile"
           @click="open = !open"
         >
           <span class="block w-5 h-0.5 bg-current"></span>
@@ -79,7 +95,7 @@ function close() {
       </div>
     </div>
 
-    <div v-if="open" class="md:hidden border-t border-black/5 dark:border-white/10 bg-transparent backdrop-blur-md">
+    <div v-if="open" id="menu-mobile" class="md:hidden border-t border-black/5 dark:border-white/10">
       <nav class="px-6 py-4 flex flex-col gap-3">
         <a
           v-for="l in links"
